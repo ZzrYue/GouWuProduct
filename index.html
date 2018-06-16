@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/star.css">
+    <title>首页</title>
+    <!--[if lt IE 9]>
+    <script src='./js/html5shiv.min.js'></script>
+    <script src='./js/respond.js'></script>
+    <![endif]-->
+  </head>
+  <body> 
+    <canvas id="space"></canvas>
+    <a href="javascript:;" id="warp"></a>
+  <div class="layout">
+    <!-- 加载动画部分 -->
+    <div class="loading">
+      <img src="./images/zuqiu.gif" alt="">
+      <img src="./images/ajax-loader.gif" alt="">
+    </div>
+    <!-- 慢慢买首页头部部分 -->
+    <div class="header">
+        <a href="javascript:;">
+            <img src="./images/header_logo.png" alt="">
+        </a>
+        <a href="javascript:;">
+            <img src="./images/header_app.png" alt="">
+        </a>
+    </div>
+     <!-- 慢慢买首页搜索框部分 -->
+     <form action="" name="form">
+        <div class="search">
+          <input type="text" placeholder="请输入你想比价的商品">
+         <input type="button" value="搜索">
+        </div>
+     </form>
+     <!-- 慢慢买导航部分 -->
+     <div  class="m_nav">
+        
+     </div>
+     <!-- 慢慢买折扣部分 -->
+     <div class="discount">
+        <div class="discountTitle">
+          <a href="./pages/moneyctrl.html">
+             <span>超值折扣推荐</span>
+            <img src="./images//more.png" alt="">
+          </a>
+        </div>  
+         <ul class="clearfix">
+         </ul>
+         <div class="discountMore">
+            <a href="./pages/moneyctrl.html">
+               更多优惠信息》
+            </a>
+         </div>
+     </div>
+     <!-- 慢慢买底部部分 -->
+    <div class="footer">
+      <div class="footerTitle">
+        <a href="javascript:;">
+          <span>品牌排行</span>
+         <img src="./images//more.png" alt="">
+       </a>
+      </div>
+      <div class="footerLogin">
+         <a href="javascript:;">登录</a>
+         <a href="javascript:;">注册</a>
+         <a href="javascript:scroll(0,0)">
+          <img src="./images/top.jpg" alt=""> 
+          返回顶部</a>
+      </div>
+      <div class="footerInfo">
+         <p>
+           <a href="javascript:;">手机APP下载</a>
+           <a href="javascript:;">慢慢买手机版</a>
+           -- 掌上比价平台
+          </p>
+         <p>m.manmanbuy.com</p>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
+<!-- 导航模板 -->
+<script type="text/template" id="navList">
+  <%for(var i=0;i<navList.length;i++){%> 
+     <%if(i > 1){%>
+      <!-- 判断页面渲染的内容是否超过了两行，如果是则将之后的都隐藏 -->
+        <div id="navAll">
+            <ul class="clearfix">
+                <%for(var j=0;j<navList[i].length;j++){%>
+                  <li data-id="<%=navList[i][j]._id%>">
+                    <a href="./pages/<%=navList[i][j].titlehref%>">
+                          <%=#navList[i][j].img %>
+                       <p><%=navList[i][j].name%></p>
+                    </a>
+                  </li>
+                 <%}%>
+              </ul>
+        </div>
+     <%}else{%>
+       <!-- 页面正常渲染两行 -->
+      <ul class="clearfix">
+          <%for(var j=0;j<navList[i].length;j++){%>
+            <li data-id="<%=navList[i][j]._id%>">
+              <a href="./pages/<%=navList[i][j].titlehref%>">
+                  <%=#navList[i][j].img %>
+                 <p><%=navList[i][j].name%></p>
+              </a>
+            </li>
+           <%}%>
+        </ul>
+     <% } %>
+  <% } %>
+</script>
+<!-- 折扣推荐模板 -->
+<script type="text/template" id="discountList">
+  <% for(var i =0; i < lists.length; i++){ %>
+    <li>
+        <a href="./pages/yt_particular.html?productid=<%=lists[i].productId%>">
+           <div class="discountImg">
+              <%=# lists[i].productImgSm%>
+           </div>
+           <div class="discountInfo">
+              <div class="title">
+                <span><%=lists[i].productName%></span>
+                 <span><%= lists[i].productPinkage%></span>
+              </div>
+              <div class="other">
+                  <div class="from">
+                      <span><%=lists[i].productFrom%></span>
+                      <span><%=lists[i].productTime%></span>
+                  </div>
+                  <div class="count">
+                     <img src="./images/ic_comment.png"></img>
+                     <%=num[i]%>
+                  </div>
+              </div>
+           </div>
+        </a>
+      </li>
+    <% }%>
+</script>
+<script src="./lib/template-web.js"></script>
+<script src="./lib/zepto/zepto.min.js"></script>
+<!-- <script src="./lib/zepto/ajax.js"></script> -->
+<script src="./lib/zepto/touch.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/star.js"></script>
